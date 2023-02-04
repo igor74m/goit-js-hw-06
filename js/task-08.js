@@ -6,7 +6,7 @@
 //  відбуватися відповідно до події submit.
 // Під час відправлення форми сторінка не повинна
 // перезавантажуватися.
-// Якщо у формі є незаповнені поля, виводь alert 
+// Якщо у формі є незаповнені поля, виводь alert
 // з попередженням про те, що всі поля повинні бути
 // заповнені.
 // Якщо користувач заповнив усі поля і відправив форму,
@@ -14,6 +14,7 @@
 //      де ім'я поля буде ім'ям властивості,
 //     а значення поля - значенням властивості.
 // Для доступу до елементів форми використовуй властивість elements.
+
 const form = document.querySelector('.login-form');
 form.addEventListener('submit', onFormSubmit);
 
@@ -23,13 +24,14 @@ function onFormSubmit(event) {
     const { email, password } = event.currentTarget.elements;
     console.log('email:', email.value);
     console.log('password:', password.value);
-    if (email.value === '' || password.value === '') {
-        alert('всі поля повинні бути заовнені');
+    if (email.value.trim() === '' || password.value === '') {
+        console.log(email.value);
+        return alert('всі поля повинні бути заовнені');
+       
     } 
-        return   {
-            email,
-            password,
-        }
+    console.log(`email: ${ email.value }, password: ${password.value}`);
+      
     
-    form.reset();
+    event.target.reset();
 }
+

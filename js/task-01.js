@@ -1,14 +1,30 @@
+// Напиши скрипт, який:
 
+// Порахує і виведе в консоль кількість категорій в ul#categories,
+// тобто елементів li.item.
+// Для кожного элемента li.item у списку ul#categories,
+//  знайде і виведе в консоль текст заголовку елемента(тегу < h2 >)
+//   і кількість елементів в категорії(усіх < li >, вкладених в нього).
+// В результаті, в консолі будуть виведені наступні повідомлення.
+
+// Number of categories: 3
+
+// Category: Animals
+// Elements: 4
+
+// Category: Products
+// Elements: 3
+
+// Category: Technologies
+// Elements: 5
 
 const categoriesItemsEl = document.querySelectorAll("#categories .item");
 console.log("Number of categories: ", categoriesItemsEl.length);
-const categoriesItemsTitleEl = document.querySelectorAll("#categories .item h2");
-for(let categoriesItemTitleEl of categoriesItemsTitleEl) {
-    console.log(`Category:`, categoriesItemTitleEl.textContent);
-    const categoriesItemsTitleListEl = categoriesItemTitleEl.nextElementSibling.children.length;
-    console.log(`Elements:`, categoriesItemsTitleListEl);
-   
-};
- 
+const array = [...categoriesItemsEl];
+array.forEach((element) => {
+    console.log('Category:', element.firstElementChild.textContent);
+    console.log('Elements:', element.lastElementChild.childElementCount);
+  });
+
 
 

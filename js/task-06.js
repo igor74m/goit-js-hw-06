@@ -11,12 +11,17 @@
 //  які ми вже додали у вихідні файли завдання.
 
 const input = document.querySelector("#validation-input");
+
 input.addEventListener("blur", function () {
   if (Number(input.dataset.length) === input.value.length) {
-    input.classList.remove("invalid");
-    input.classList.add("valid");
+       addRemoveClass("valid", "invalid")
   } else {
-    input.classList.add("invalid");
-    input.classList.remove("valid");
+     addRemoveClass("invalid", "valid")
   }
 });
+
+function addRemoveClass(addClass, removeClass) {
+   input.classList.remove(removeClass);
+    input.classList.add(addClass);
+};
+
